@@ -10,24 +10,13 @@ FROM python:3.10-slim-bookworm
 # Set working directory
 WORKDIR /app
 
-# Copy dependency files first for caching
-# COPY pyproject.toml uv.lock .env ./
+
 COPY requirements.txt main.py frontend.py .env /pdfs /app/
 
-# Install dependencies system-wide (no virtualenv)
-# RUN uv pip install --system --no-cache -r <(uv pip compile uv.lock)
-# Generate requirements from lock + install globally
-# RUN uv pip compile uv.lock -o requirements.txt
-# RUN uv pip install --system --no-cache -r requirements.txt
-# Install dependencies directly from lock file (system-wide, no venv)
-# RUN uv sync --frozen --no-dev --system
-# Copy application files
-# RUN uv sync
-# COPY main.py frontend.py /app/
+# Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 # Environment variables
 ENV CHROMA_DIR=./chroma_db \
-    # GOOGLE_API_KEY="AIzaSyD0L3CacF3HuaYZHplUwZlKXzNsn4f75JA" \
     AUDIO_DIR=./static/audio \
     STATIC_URL=/static \
     HOST=0.0.0.0 \
