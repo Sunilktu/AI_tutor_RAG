@@ -58,8 +58,8 @@ Follow these steps to run the application directly on your machine.
 ### 1\. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
-cd <your-repository-name>
+git clone https://github.com/Sunilktu/AI_tutor_RAG.git
+cd AI_tutor_RAG
 ```
 
 ### 2\. Set Up a Virtual Environment
